@@ -26,7 +26,7 @@ We provide a script to automatically download and arrange the data:
     ```bash
     python src/download_data.py
     ```
-2.  Alternatively, download manually from **[MASUKKAN LINK GOOGLE DRIVE DISINI]** and extract it to the `data/raw/` directory.
+2.  Alternatively, download manually from **https://drive.google.com/drive/u/0/folders/16TLvMp39vcos9LCal64AFJW0DOLDfc07** and extract it to the `data/raw/` directory.
 
 ## 🏗️ Methodologies
 
@@ -36,18 +36,18 @@ We provide a script to automatically download and arrange the data:
 * **Characteristics:** Low parameter count, fast inference, but prone to overfitting on small data.
 
 ### 2. Transfer Learning (CNN)
-* **Backbone:** **[SEBUTKAN NAMA MODEL, MISAL: ResNet50 / MobileNetV2]** (Pre-trained on ImageNet).
+* **Backbone:** **MobileNetV2** (Pre-trained on ImageNet).
 * **Strategy:** Freezing the feature extractor layers and fine-tuning the classification head.
 * **Goal:** To maximize accuracy with limited training data.
 
 ### 3. Vision Transformer (ViT)
-* **Model:** **[SEBUTKAN MODEL, MISAL: ViT-Base-16]** using `timm`.
+* **Model:** **ViT-Base-16** using `timm`.
 * **Strategy:** Splitting images into patches and processing them via Transformer Encoders.
 * **Goal:** To analyze if global context (attention) improves waste recognition compared to local features (CNN).
 
 ## 📊 Experimental Results
 
-We trained each model for **[JUMLAH_EPOCH]** epochs. Below is the performance comparison on the Test Set:
+We trained each model for **20** epochs. Below is the performance comparison on the Test Set:
 
 | Model Architecture | Accuracy | F1-Score | Inference Time (ms) | Model Size |
 | :--- | :---: | :---: | :---: | :---: |
