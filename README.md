@@ -51,7 +51,7 @@ We trained each model for **20** epochs. Below is the performance comparison on 
 
 | Model Architecture | Accuracy | F1-Score | Inference Time (ms) | Model Size |
 | :--- | :---: | :---: | :---: | :---: |
-| **Custom CNN** | [XX.X]% | [0.XX] | [XX] ms | [XX] MB |
+| **Custom CNN** | 60% | [0.XX] | [XX] ms | [XX] MB |
 | **Transfer Learning** | **[XX.X]%** | **[0.XX]** | [XX] ms | [XX] MB |
 | **Vision Transformer** | [XX.X]% | [0.XX] | [XX] ms | [XX] MB |
 
