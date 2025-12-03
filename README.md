@@ -69,8 +69,7 @@ We trained each model for **20** epochs. Below is the performance comparison on 
 
 ### 1. Clone & Install
 ```bash
-git clone [https://github.com/](https://github.com/)[USERNAME_GITHUB_KAMU]/[NAMA_REPO].git
-cd [NAMA_REPO]
+git clone https://github.com/Number1e/Project-Klasifikasi-Sampah-Mata-Kuliah-Machine-Learning.git.git
 pip install -r requirements.txt
 # Train Custom CNN
 python src/train.py --model custom_cnn --epochs 20 --batch_size 32
