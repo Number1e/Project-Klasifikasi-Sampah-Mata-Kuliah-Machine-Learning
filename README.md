@@ -95,14 +95,14 @@ streamlit run app.py
 
 ## 👥 Authors
 
-**1. [Syafrizal Rabbanie]**
-* **NIM:** [202210370311453]
-* **University:** [Universitas Muhammadiyah Malang]
-
-**2. [Moh. Zahidi]**
+**1. [Moh. Zahidi]**
 * **NIM:** [202210370311419]
 * **University:** [Universitas Muhammadiyah Malang]
 
-**3. [Haris Rifky Juliantoro]**
+**2. [Haris Rifky Juliantoro]**
 * **NIM:** [202210370311421]
+* **University:** [Universitas Muhammadiyah Malang]
+
+**3. [Syafrizal Rabbanie]**
+* **NIM:** [202210370311453]
 * **University:** [Universitas Muhammadiyah Malang]
