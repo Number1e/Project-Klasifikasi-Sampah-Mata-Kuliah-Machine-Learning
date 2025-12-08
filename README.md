@@ -1,37 +1,44 @@
 # Project-Klasifikasi-Sampah-Mata-Kuliah-Machine-Learning
-# ♻️ Trash Classification: Comparative Study (ViT vs CNN)
+# ♻️ Trash Classification: Comparative Study (ViT vs CNN vs SVM)
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange?logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0%2B-orange?logo=tensorflow&logoColor=white)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ## 📌 Project Overview
-This project focuses on the classification of waste materials to support automated recycling processes. The core objective is not just to build a classifier, but to conduct a **comparative analysis** between three distinct Deep Learning paradigms:
+This project focuses on the classification of waste materials to support automated recycling processes. The core objective is not just to build a classifier, but to conduct a **comparative analysis** between Deep Learning paradigms and Traditional Machine Learning:
 
 1.  **CNN from Scratch:** Establishing a baseline with a lightweight custom architecture.
 2.  **Transfer Learning:** Leveraging pre-trained knowledge for high efficiency.
 3.  **Vision Transformer (ViT):** Exploring the efficacy of Self-Attention mechanisms on waste datasets.
+4.  **Support Vector Machine (SVM):** Comparing modern Deep Learning with classical Machine Learning methods.
 
-This repository contains the full pipeline: from data loading (Google Drive integration) to model training and evaluation metrics.
+This repository contains the full pipeline: from data loading, model training, to a **Streamlit GUI** for easy inference.
 
 ## 📂 Dataset
-The dataset consists of **[2500]** images divided into **[3]** classes (e.g., *Plastic, Paper, Metal, Glass, etc.*).
+The dataset consists of **2500** images divided into **3** classes:
+* **Kaca (Glass)**
+* **Kardus (Cardboard)**
+* **Plastik (Plastic)**
 
 > **Note:** Due to storage limitations, the raw dataset is hosted externally on Google Drive.
 
 ### How to Setup Data
-We provide a script to automatically download and arrange the data:
-
-1.  Run the setup script:
-    ```bash
-    python src/download_data.py
+1.  **Download Manual:**
+    Download the dataset from [Google Drive Link](https://drive.google.com/drive/u/0/folders/1q5WNdPgmqbhq93u7WSyaScZyE3LUuYSg).
+2.  **Extract:**
+    Extract the contents into the `data/raw/` directory so the structure becomes:
     ```
-2.  Alternatively, download manually from **[https://drive.google.com/drive/u/0/folders/16TLvMp39vcos9LCal64AFJW0DOLDfc07](https://drive.google.com/drive/u/0/folders/1q5WNdPgmqbhq93u7WSyaScZyE3LUuYSg)** and extract it to the `data/raw/` directory.
+    data/raw/
+    ├── Kaca/
+    ├── Kardus/
+    └── Plastik/
+    ```
 
 ## 🏗️ Methodologies
 
 ### 1. Custom CNN (Baseline)
-* **Architecture:**Custom 4-Block Convolutional Neural Network.
+* **Architecture:** Custom 4-Block Convolutional Neural Network.
 * **Goal:** To test performance without any external knowledge (weights).
 * **Characteristics:** Optimized for local feature extraction with significantly lower parameter count than standard VGG/ResNet.
 
@@ -42,42 +49,71 @@ We provide a script to automatically download and arrange the data:
 
 ### 3. Vision Transformer (ViT)
 * **Model:** A custom-built, lightweight Vision Transformer (ViT) implemented from scratch.
-* **Configuration:** Input size: 128x128 (resized for efficiency).
-* **Strategy:** Patch-based Learning. Images are split into 16x16 patches and processed via Self-Attention mechanisms to capture global context.
+* **Configuration:** Input size: 128x128 (resized for efficiency), Patch size: 16x16.
+* **Strategy:** Patch-based Learning with Self-Attention mechanisms.
 * **Goal:** To analyze the efficacy of the Attention mechanism on waste recognition tasks under constrained computational resources (non-pretrained).
+
+### 4. Support Vector Machine (SVM)
+* **Feature Extraction:** Manual extraction using Color Histograms (HSV), Texture (GLCM), and Shape (Hu Moments).
+* **Kernel:** RBF (Radial Basis Function).
+* **Goal:** To provide a benchmark using classical computer vision techniques.
 
 ## 📊 Experimental Results
 
 We trained each model for **20** epochs. Below is the performance comparison on the Test Set:
 
-| Model Architecture | Accuracy | F1-Score | 
-| :--- | :---: | :---: | 
-| **Custom CNN** | 74% | 0,74 |
-| **Transfer Learning** | **96%** | **o,96** |
-| **Vision Transformer** | 60,5% | o,6 |
-| **SVM** | 68% | o,68 |
+| Model Architecture | Accuracy | F1-Score |
+| :--- | :---: | :---: |
+| **Transfer Learning (MobileNetV2)** | **96.0%** | **0.96** |
+| Custom CNN (Scratch) | 74.0% | 0.74 |
+| SVM (Traditional ML) | 68.0% | 0.68 |
+| Vision Transformer (ViT Scratch) | 60.5% | 0.60 |
 
 ### 💡 Key Insights
-* **Transfer Learning Dominance:** [Jelaskan hasilmu, misal: Transfer learning achieved the highest accuracy due to robust feature extraction learned from ImageNet.]
-* **ViT vs CNN:** [Jelaskan hasilmu, misal: ViT struggled slightly/performed well. Note that ViTs generally lack inductive bias (translation invariance) and typically require massive datasets to outperform CNNs significantly.]
-* **Efficiency:** [Jelaskan mana yang paling cepat/ringan].
+* **Transfer Learning Dominance (96%):** MobileNetV2 achieved superior performance because it leverages features learned from millions of images (ImageNet). For a small dataset (2500 images), pre-trained weights prevent overfitting and converge much faster.
+* **CNN vs ViT (74% vs 60.5%):** The Custom CNN significantly outperformed the Custom ViT. This supports the theory that **ViTs lack inductive bias** (translation invariance and locality) inherent in CNNs. ViTs typically require massive datasets (JFT-300M, ImageNet-21k) to learn spatial relationships effectively. On a small dataset trained from scratch, ViT fails to generalize well.
+* **SVM Performance (68%):** SVM performed respectably, beating ViT. This shows that for small datasets, hand-crafted features (Color/Texture) can sometimes be more effective than a deep learning model that hasn't converged properly (like the ViT scratch).
 
 ## 🚀 Installation & Usage
 
 ### Prerequisites
 * Python 3.8+
-* CUDA capable GPU (Recommended)
+* GPU (Optional, but recommended for training)
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/Number1e/Project-Klasifikasi-Sampah-Mata-Kuliah-Machine-Learning.git.git
+git clone [https://github.com/Number1e/Project-Klasifikasi-Sampah-Mata-Kuliah-Machine-Learning.git](https://github.com/Number1e/Project-Klasifikasi-Sampah-Mata-Kuliah-Machine-Learning.git)
+cd Project-Klasifikasi-Sampah-Mata-Kuliah-Machine-Learning
 pip install -r requirements.txt
-# Train Custom CNN
-python src/train.py --model custom_cnn --epochs 20 --batch_size 32
+```
+### 2. Run the App (GUI)
+```bash
+streamlit run app.py
+```
+> **Note:** for Google Colab users Since Colab runs on the cloud, you cannot access localhost directly. You must use Ngrok tunneling as described in the notebook to view the dashboard.
+### Project Structure
+├── app.py                # Streamlit Dashboard Frontend (GUI)
+├── requirements.txt      # Python Dependencies
+├── README.md             # Project Documentation
+├── src/                  # Source Code
+│   ├── predict.py        # Main Inference Logic (Supports CNN, ViT, SVM)
+├── models/               # Saved Model Weights (Git-ignored, hosted externally)
+│   ├── cnn_scratch.keras
+│   ├── mobilenet.h5
+│   └── svm_best/
+└── data/                 # Dataset folder (Git-ignored)
+    └── raw/              # Extracted images
 
-# Train Transfer Learning Model
-python src/train.py --model transfer_learning --epochs 20 --batch_size 32
+## 👥 Authors
 
-# Train Vision Transformer
-python src/train.py --model vit --epochs 20 --batch_size 16
-python src/evaluate.py --model_path models/best_model.pth
+**1. [Syafrizal Rabbanie]**
+* **NIM:** [202210370311453]
+* **University:** [Universitas Muhammadiyah Malang]
+
+**2. [Moh. Zahidi]**
+* **NIM:** [202210370311419]
+* **University:** [Universitas Muhammadiyah Malang]
+
+**3. [Haris Rifky Juliantoro]**
+* **NIM:** [202210370311421]
+* **University:** [Universitas Muhammadiyah Malang]
