@@ -1,0 +1,9 @@
+streamlit
+tensorflow
+numpy
+pillow
+opencv-python
+scikit-learn
+scikit-image
+joblib
+pyngrok
