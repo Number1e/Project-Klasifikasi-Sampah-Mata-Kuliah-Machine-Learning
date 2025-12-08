@@ -91,18 +91,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 > **Note:** for Google Colab users Since Colab runs on the cloud, you cannot access localhost directly. You must use Ngrok tunneling as described in the notebook to view the dashboard.
-### Project Structure
-├── app.py                # Streamlit Dashboard Frontend (GUI)
-├── requirements.txt      # Python Dependencies
-├── README.md             # Project Documentation
-├── src/                  # Source Code
-│   ├── predict.py        # Main Inference Logic (Supports CNN, ViT, SVM)
-├── models/               # Saved Model Weights (Git-ignored, hosted externally)
-│   ├── cnn_scratch.keras
-│   ├── mobilenet.h5
-│   └── svm_best/
-└── data/                 # Dataset folder (Git-ignored)
-    └── raw/              # Extracted images
+
 
 ## 👥 Authors
 
