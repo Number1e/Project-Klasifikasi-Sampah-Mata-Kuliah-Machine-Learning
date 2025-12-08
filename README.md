@@ -52,9 +52,10 @@ We trained each model for **20** epochs. Below is the performance comparison on 
 
 | Model Architecture | Accuracy | F1-Score | 
 | :--- | :---: | :---: | 
-| **Custom CNN** | 74% | 0,61 |
+| **Custom CNN** | 74% | 0,74 |
 | **Transfer Learning** | **96%** | **o,96** |
-| **Vision Transformer** | 60,5% | o,65 |
+| **Vision Transformer** | 60,5% | o,6 |
+| **SVM** | 68% | o,68 |
 
 ### 💡 Key Insights
 * **Transfer Learning Dominance:** [Jelaskan hasilmu, misal: Transfer learning achieved the highest accuracy due to robust feature extraction learned from ImageNet.]
