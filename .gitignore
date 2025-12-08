@@ -1,0 +1,13 @@
+# Abaikan folder model dan file berat
+models/*.h5
+models/*.keras
+models/*.pkl
+models/*.pth
+__pycache__/
+*.pyc
+
+# Abaikan dataset dan gambar test
+test_images/
+*.jpg
+*.png
+*.jpeg
