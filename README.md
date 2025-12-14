@@ -64,14 +64,14 @@ We trained each model for **20** epochs. Below is the performance comparison on 
 
 | Model Architecture | Accuracy | F1-Score |
 | :--- | :---: | :---: |
-| **Transfer Learning (MobileNetV2)** | **96.0%** | **0.96** |
-| Custom CNN (Scratch) | 74.0% | 0.74 |
+| **Transfer Learning (MobileNetV2)** | **89.0%** | **0.89** |
+| Custom CNN (Scratch) | 64.0% | 0.64 |
 | SVM (Traditional ML) | 68.0% | 0.68 |
-| Vision Transformer (ViT Scratch) | 60.5% | 0.60 |
+| Vision Transformer (ViT Scratch) | 59% | 0.59 |
 
 ### 💡 Key Insights
-* **Transfer Learning Dominance (96%):** MobileNetV2 achieved superior performance because it leverages features learned from millions of images (ImageNet). For a small dataset (2500 images), pre-trained weights prevent overfitting and converge much faster.
-* **CNN vs ViT (74% vs 60.5%):** The Custom CNN significantly outperformed the Custom ViT. This supports the theory that **ViTs lack inductive bias** (translation invariance and locality) inherent in CNNs. ViTs typically require massive datasets (JFT-300M, ImageNet-21k) to learn spatial relationships effectively. On a small dataset trained from scratch, ViT fails to generalize well.
+* **Transfer Learning Dominance (89%):** MobileNetV2 achieved superior performance because it leverages features learned from millions of images (ImageNet). For a small dataset (2500 images), pre-trained weights prevent overfitting and converge much faster.
+* **CNN vs ViT (64% vs 59%):** The Custom CNN significantly outperformed the Custom ViT. This supports the theory that **ViTs lack inductive bias** (translation invariance and locality) inherent in CNNs. ViTs typically require massive datasets (JFT-300M, ImageNet-21k) to learn spatial relationships effectively. On a small dataset trained from scratch, ViT fails to generalize well.
 * **SVM Performance (68%):** SVM performed respectably, beating ViT. This shows that for small datasets, hand-crafted features (Color/Texture) can sometimes be more effective than a deep learning model that hasn't converged properly (like the ViT scratch).
 
 ## 🚀 Installation & Usage
